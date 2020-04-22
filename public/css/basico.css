@@ -1,0 +1,30 @@
+body{
+	background-color: rgb(209, 218, 249);
+  width: 1000px;
+  margin: 0 auto;
+  font-size: 18px;
+  color:black;
+}
+
+form>* {
+	color:  white;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+header{
+  background-color: black;
+}
+
+h1{
+  color: blue;
+}
+p{
+  color: black;
+}
+
+h5{
+  color: black;
+}
