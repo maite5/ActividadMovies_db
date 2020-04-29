@@ -19,4 +19,7 @@ class Actor extends Model
         //imp 1para nomMode, 2para tabla intermedia, 3para clavFo, 4clavF
     return $this->belongsToMany("App\Pelicula", "actor_movie", "actor_id", "movie_id");    
     } 
+    public function pelicula(){  
+    return $this->hasMany("App\Pelicula", "movie_id");  
 }
+   }

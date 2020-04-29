@@ -58,7 +58,9 @@ Route::get('/dd', 'PeliculasController@formul');
 //aqui inicia los Route para borrar segùn el video d herni
 
 Route::get('/pais/{id}', 'PeliculasController@detallePais'); 
-Route::get('/pais/borrar/{id}', 'PeliculasController@alertaPais');
-Route::post('/pais/borrar{id}', 'PeliculasController@eliminarPais'); 
 
+Route::get('/eliminarPelicula/{id}','PeliculasController@destroy');
 
+//FORMULARIO MODIFICAR PRODUCTO
+Route::get('/formModificarPelicula/{id}', 'PeliculasController@edit'); 
+Route::post('/editarPelicula/{id}', 'PeliculasController@update'); 

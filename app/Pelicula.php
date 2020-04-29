@@ -19,4 +19,9 @@ class Pelicula extends Model
     return $this->belongsToMany('App\Actor', 'actor_movie', 'movie_id', 'actor_id' );
 
 }
+    //esto lo hice yo para la relacion del modelo paa eliminar 2parametros
+    //1 que tipo de objeto pertenece 2clave foranea
+    public function actor() {
+        return $this->hasMany('App\Actor', 'actor_movie');
+    } 
 }

@@ -46,6 +46,8 @@
         
     <!-- paginate  -->
         {{$peliculas->links()}}
-        @endsection
+
+        @endsection 
+  <!--  </section> -->
 </body>
-</html>
+</html> 

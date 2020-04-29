@@ -3,22 +3,20 @@
     "\css\basico.css"
 @endsection
 
-<!--  @section('title', 'Enlace de peliculas')
+ <section id="seccion title, Panel de peliculas">  
+  
+
     <br>
     @section('h1', 'eliminar Peliculas')
 
-    @section('main') --> 
-
-
-
-
+    @section('main') 
 
 
         <div class="row">
             
         <!--   <form class=" " action="/pais/borrar" method="POST">  -->
                 
-       <!--     <div class="col-6 offset-3">  -->
+           <div class="col-6 offset-3"> 
               
             <!--    <div class="card-body">  -->
                
@@ -32,10 +30,13 @@
                 </div>  
                 <a href="/pais/borrar/{{ $peliculas->id}}" class="text-danger"><small>Eliminar pelicula</small></a>
             </div>          
-            
+        
         </div>  
     </div>
 </section>
-@endsection
+
+</section>
+  @endsection   
+
 </body>  
 </html> 

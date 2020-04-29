@@ -1,6 +1,7 @@
 @extends('layouts.plantilla')
-
-    @section('title', 'Panel de Peliculas')
+ 
+@section('title', 'Panel de Peliculas')
+ 
 
     @section('h1', 'Panel de Peliculas')
 
@@ -34,12 +35,12 @@
                 <td>{{ $pelicula->rating }}</td>
                 <td>{{ $pelicula->awards }}</td>
                 <td>
-                    <a href="" class="btn btn-outline-secondary">
+                    <a href="http://localhost:8000/formModificarPelicula/{id}" class="btn btn-outline-secondary">
                         Modificar
                     </a>
                 </td>
                 <td>
-                    <a href="http://localhost:8000/pais/{$id}" class="btn btn-outline-secondary">
+                    <a href="eliminarPelicula/{{$pelicula->id}}" class="btn btn-outline-secondary">
                         Eliminar 
                     </a>
                 </td>

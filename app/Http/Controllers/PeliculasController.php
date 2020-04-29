@@ -63,47 +63,49 @@ public function listadoAPI(){
   $peliculaNueva->genre_id=$req["genre_id"]; 
   $peliculaNueva-> save(); 
  // return redirect ("/peliculas");   
- return view('/dd');
+ return redirect("/dd"); 
 }  
   //esta funcion es para eliminar segun playground
-  public function destroy(Request $formulario){ 
-    $id=formulario['id'];
+  public function destroy($id)
+  { 
     //recupera l pelicula mediante l bdd
-    $pelicula=Pelicula::find($id);
+    $pelicula = Pelicula::find($id); {
+      //ACA ELIMINAR RELACION 
     $pelicula->delete();
-    //return redirect ('/peliculas'); 
-    return redirect ('/dd');
+    return redirect("/dd");  
   } 
-   
-
-
-
-
-
+  }
   //esto lo creo yo para llevar datos al formulario general
-    public function formul(){
+     public function formul() 
+    {  
       $peliculas = Pelicula::all();
       $vac = compact('peliculas');
        return view('formulPelicula', $vac);
+    } 
+
+  //Inicio funcion MODIFICAR 
+   
+  public function edit($id)
+  {
+    $pelicula = Pelicula::find($id);
+    return  view('editPelicula',['peliculas'=>$pelicula]);
   }
 
-  // Functiones para borrar
-    public function  detallePais($id) { 
-      $peliculas = Pelicula::find($id);
-      $vac = compact('peliculas'); 
-      return view('detallePais', $vac);
-    
+  public function update(Request $request, $id){
+    $pelicula = Pelicula::find($id);
+    $validar = $request->validate(
+            [
+                'nombre' => 'required|min:3|max:75'
+            ]);
+    $pelicula->title = $request->title;
+    $pelicula->rating = $request->rating;
+    $pelicula->awards = $request->awards;
+    $pelicula->release_date = $request->release_date;
+    $pelicula->genero->name = $request->genero->name; 
+  //$peliculas->imagen = $request->imagen;
+
+    $pelicula->update(); 
+    return redirect('/dd'); 
   }
-    public function alertaPais($id) {
-      $peliculas = Pelicula::find($id);
-      $vac = compact('peliculas');
-      return view('alertaPaisPelicula', $vac);
-    }
-      public function eliminarPais(Request $req){ 
-     $id= $req["id"];
-    $peliculas=Pelicula::find($id);
-    $peliculas->delete(); 
-    return redirect("/dd"); 
-  }  
-} 
+}    
 
