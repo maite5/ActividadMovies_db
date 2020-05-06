@@ -15,6 +15,12 @@
     <link rel="stylesheet" href=@yield('listadoProductos')>
     <link rel="stylesheet" href="style.css"> 
     <link href="style.css" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
   </head>
 
   <body>
@@ -22,7 +28,7 @@
         
         <div class="container">
       <nav class="navbar navbar-expand-lg navbar-dark">
-        <a class="navbar-brand" href="http://localhost:8000/index">Pelicùlas!</a>
+        <a class="navbar-brand" href="http://localhost:8000/index/pelicula">Pelicùlas!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -34,15 +40,52 @@
             <li class="nav-item">
               <a class="nav-link" href="http://localhost:8000/peliculas">Titulos</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost:8000/registrarse">Registrarse</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost:8000/listadoProductos">Productos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://localhost:8000/home">Login</a>
-            </li>
+            
+            
+            
+            <!--usuario logueado  -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <!-- Left Side Of Navbar -->
+              <ul class="navbar-nav mr-auto">
+
+              </ul>
+
+              <!-- Right Side Of Navbar -->
+              <ul class="navbar-nav ml-auto">
+                  <!-- Authentication Links -->
+                  @guest
+                      <li class="nav-item">
+                          <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                      </li>
+                      @if (Route::has('register'))
+                          <li class="nav-item">
+                              <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                          </li>
+                      @endif
+                  @else
+                      <li class="nav-item dropdown">
+                          <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                              {{ Auth::user()->name }} <span class="caret"></span>
+                          </a>
+
+                          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item" href="{{ route('logout') }}"
+                                 onclick="event.preventDefault();
+                                               document.getElementById('logout-form').submit();">
+                                  {{ __('Logout') }}
+                              </a>
+
+                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                  @csrf
+                              </form>
+                          </div>
+                      </li>
+                  @endguest
+              </ul>
+          </div>
+      </div>
+
+
           </ul>
         </div>
       </nav> 
@@ -60,67 +103,156 @@
 
 
 
-    <footer class="page-footer font-small blue pt-4">
-    <div class="container-fluid text-center text-md-left">
+<!--Footer  -->
+    <!-- Footer -->
+<footer class="page-footer font-small unique-color-dark">
 
-      <div class="row">
+  <div style="background-color: #6351ce;">
+    <div class="container">
 
-        <div class="col-md-6 mt-md-0 mt-3">
+      <!-- Grid row-->
+      <div class="row py-4 d-flex align-items-center">
 
-          <h5 class="text-uppercase">Todos los derechos reservados</h5>
-          <p>Links y lineas de contacto: </p>
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+          <h6 class="mb-0">Get connected with us on social networks!</h6>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f white-text mr-4"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter white-text mr-4"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g white-text mr-4"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in white-text mr-4"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram white-text"> </i>
+          </a>
 
         </div>
-        <hr class="clearfix w-100 d-md-none pb-3">
-
-        <div class="col-md-3 mb-md-0 mb-3">
-
-          <h5 class="text-uppercase">Redes Sociales</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="https://www.facebook.com">Facebook 1</a>
-            </li>
-            <li>
-              <a href="https://twitter.com">Twitter 2</a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com">Instagram 3</a>
-            </li>
-            <li>
-              <a href="https://www.gmail.com">Gmail 4</a>
-            </li>
-          </ul>
-
-        </div>
-        <div class="col-md-3 mb-md-0 mb-3">
-
-          <h5 class="text-uppercase">Redes Contacto</h5>
-
-          <ul class="list-unstyled">
-            <li>
-              <a href="http://localhost:8000/contacto">Mail RRHH 1</a>
-            </li>
-            <li>
-              <a href="http://localhost:8000/contacto">Atencion empresas</a>
-            </li>
-            <li>
-              <a href="http://localhost:8000/contacto">Atencion particulares</a>
-            </li>
-            <li>
-              <a href="http://localhost:8000/contacto">Denuncias </a> 
-            </li>
-          </ul>
-
-        </div>
+        <!-- Grid column -->
 
       </div>
-    </div>
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="#!">Ver Pelicula!</a>
-    </div>
+      <!-- Grid row-->
 
-  </footer>
+    </div>
+  </div>
+
+  <!-- Footer Links -->
+  <div class="container text-center text-md-left mt-5">
+
+    <!-- Grid row -->
+    <div class="row mt-3">
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+        <!-- Content -->
+        <h6 class="text-uppercase font-weight-bold">Peliculas</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>Web con nombres de peliculas, sus actores, sus Fechas de estreno...</p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Redes</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="https://www.facebook.com">Facebook</a>
+        </p>
+        <p>
+          <a href="https://www.instagram.com">Instagram</a>
+        </p>
+        <p>
+          <a href="https://www.twitter.com">Twitter</a>
+        </p>
+        <p>
+          <a href="https://www.whatsap.com">whatsapp</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Useful links</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <a href="#!">Your Account</a>
+        </p>
+        <p>
+          <a href="#!">Become an Affiliate</a>
+        </p>
+        <p>
+          <a href="#!">Shipping Rates</a>
+        </p>
+        <p>
+          <a href="#!">Help</a>
+        </p>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+        <!-- Links -->
+        <h6 class="text-uppercase font-weight-bold">Contact</h6>
+        <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+        <p>
+          <i class="fas fa-home mr-3"></i> Buenos Aires, CP 10012, ARG</p>
+        <p>
+          <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+        <p>
+          <i class="fas fa-phone mr-3"></i> + 54 200 587 88</p>
+        <p>
+          <i class="fas fa-print mr-3"></i> + 54 279 567 89</p>
+
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row -->
+
+  </div>
+  <!-- Footer Links -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#!">Ver Pelicula!</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+    
+
+  <script type="text/javascript" src="node_modules/mdbootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>

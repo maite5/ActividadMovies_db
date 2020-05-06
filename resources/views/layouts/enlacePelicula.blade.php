@@ -28,7 +28,8 @@
     <ul>
         @forelse ($peliculas as $pelicula)
             <li>
-            <p> {{$pelicula['title']}} </p> 
+            <p> {{$pelicula['title']}} </p>  
+        
             </li> 
     </ul>
     @empty

@@ -4,15 +4,16 @@
     "\css\basico.css"
 @endsection
 
-    @section('title', 'Listado de diez pelicula detalle y sus actores ')
-    <br>
+    @section('title', 'Listado de pelicula detalle, sus actores ')
+    
     @section('h1', 'Detalle Pelicula ')
 
     @section('main')
 
-
-    <ul>
+    <section id="pelicula">
+ <!--  <ul> -->
         @forelse ($peliculas as $pelicula)
+        <ul>
             <li>
             <p> <a href="/pelicula/{{$pelicula->id}}">{{$pelicula->title}}  </a>
              <p> Rating:  {{$pelicula->rating}}  </p>

@@ -1,20 +1,21 @@
-    @extends('layouts.plantilla')
+@extends('layouts.plantilla')
     @section('fqa')
     "\css\basico.css"
 @endsection
 
     @section('title', 'Enlace de peliculas')
-    <br>
-    @section('h1', 'Titulo de diez Peliculas')
+    
+    @section('h1', 'Titulo de  Peliculas')
 
     @section('main')
 
 
-
-    <ul>
+    <section id="pelicula">
         @forelse ($peliculas as $pelicula)
+    <ul>
+        
             <li>
-  <p>   <a href="#pelicula"> {{$pelicula['title']}}  </p> 
+   <a href="http://localhost:8000/pelicula/{{$pelicula->id}}">{{$pelicula['title']}}  
             </li> 
     </ul>
     @empty 

@@ -1,4 +1,5 @@
 @extends('layouts.plantilla')
+
  
 @section('title', 'Panel de Peliculas')
  
@@ -35,7 +36,7 @@
                 <td>{{ $pelicula->rating }}</td>
                 <td>{{ $pelicula->awards }}</td>
                 <td>
-                    <a href="http://localhost:8000/formModificarPelicula/{id}" class="btn btn-outline-secondary">
+                    <a href="formModificarPelicula/{{$pelicula->id}}" class="btn btn-outline-secondary">
                         Modificar
                     </a>
                 </td>

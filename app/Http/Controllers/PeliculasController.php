@@ -11,39 +11,37 @@ class PeliculasController extends Controller
      public function listado() 
       {   $peliculas = Pelicula::paginate(6);
          // $peliculas = Pelicula::all();
-
-          $vac = compact('peliculas');
+           $vac = compact('peliculas');
            return view('listadoPelicula', $vac);
-}  
-
-  // return view('listadoPelicula');  
-
-  //aparece en video de controlador le coloque para espec id, pero no lo uso
-  
-  //public function detalle($id) {
-    //  $vac= compact("id");
-     // return view("detallePelicula", $vac);
-     public function detalle($id) {
-       $peliculas =Pelicula::all($id);
-        $vac= peliculas("id");
-        return view("detallePelicula", $vac);
-  }
+      }  
+     
+      public function detalle($id) {
+        $pelicula = Pelicula::find($id);
+        return view('detallePelicula')->with('pelicula', $pelicula);
+    }
   
   //esta la hice yo para q salga l vista d actoresc peli
-    public function actores() 
- {
-  $peliculas = Pelicula::all();
-  $vac = compact('peliculas');
-   return view('listadoActores', $vac);
+    public function actores() {
+     $peliculas = Pelicula::all();
+      $vac = compact('peliculas');
+      return view('listadoActores', $vac);
   }
   
-  //este lo hice yo para mostrar td ls nombres d las peliculas index
-  public function enlace() 
-      {
+  //Nombres d las peliculas index 
+          public function enlace(){
           $peliculas = Pelicula::all();
           $vac = compact('peliculas');
-           return view('enlacePelicula', $vac); 
-}  
+       //    return view('enlacePelicula', $vac);
+       return view('enlacePelicula', $vac); 
+        }   
+
+        //vista de Peliculas sin estar logueado 
+        public function vista(){
+          $peliculas = Pelicula::all();
+          $vac = compact('peliculas');
+           return view('vistaPelicula', $vac); 
+        }  
+
 
 // esto es de la API
 public function listadoAPI(){
@@ -88,24 +86,24 @@ public function listadoAPI(){
   public function edit($id)
   {
     $pelicula = Pelicula::find($id);
-    return  view('editPelicula',['peliculas'=>$pelicula]);
+    $vac = compact("pelicula");
+    return  view('editPelicula',$vac);
   }
 
-  public function update(Request $request, $id){
-    $pelicula = Pelicula::find($id);
-    $validar = $request->validate(
-            [
-                'nombre' => 'required|min:3|max:75'
-            ]);
-    $pelicula->title = $request->title;
-    $pelicula->rating = $request->rating;
-    $pelicula->awards = $request->awards;
-    $pelicula->release_date = $request->release_date;
-    $pelicula->genero->name = $request->genero->name; 
-  //$peliculas->imagen = $request->imagen;
+  public function update(Request $request)
+    {
+        
+        $Pelicula = Pelicula::find($request->input('id'));
+        $Pelicula->title = $request->input('title');
+        $Pelicula->rating = $request->input('rating');
+        $Pelicula->awards = $request->input('awards');
+        $Pelicula->release_date = $request->input('release_date');
+        $Pelicula->genero->name = $request->input('genero->name');
+        $Pelicula->save();
+        return redirect('/dd')
+            ->with('mensaje', 'Pelicula '.$Pelicula->title.' modificada con éxito');
+    }
 
-    $pelicula->update(); 
-    return redirect('/dd'); 
-  }
+  
 }    
 

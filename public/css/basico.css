@@ -1,6 +1,6 @@
 body{
 	background-color: rgb(209, 218, 249);
-  width: 1000px;
+  width: 100%;
   margin: 0 auto;
   font-size: 18px;
   color:black;
@@ -27,4 +27,12 @@ p{
 
 h5{
   color: black;
+}
+footer {
+  background-color:#182736;
+  color:white;
+}
+footer #li{
+  color:white;
+
 }

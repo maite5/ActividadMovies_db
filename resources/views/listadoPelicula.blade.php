@@ -25,8 +25,9 @@
 
     <!--termina el buscador  -->
     <br>
-    <ul>
+    
         @forelse ($peliculas as $pelicula)
+            <ul>
             <li>
             <p> <a href=" {{$pelicula->id}}">{{$pelicula->title}} </a>
             </p>

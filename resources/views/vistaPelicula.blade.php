@@ -9,15 +9,10 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-<link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
-<link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
         <!-- Styles -->
         <style>
             html, body {
-                background-color: rgb(246, 247, 250)253, 225, 225);
+                background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
@@ -66,17 +61,6 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-
-            footer {
-  background-color:#182736;
-  color:white;
-  align-content:center;
-  
-}
-footer #li{
-  color:white;
-
-}
         </style>
     </head>
     <body>
@@ -98,31 +82,24 @@ footer #li{
 
             <div class="content">
                 <div class="title m-b-md">
-                   Peliculas  
-                </div>
-
-                <div class="container">
-                <div class="links">  
-                    <!--Mask with wave-->
                     
-
-                 <img src="http://es.web.img2.acsta.net/r_400_320/medias/nmedia/18/68/50/35/19502082.jpg">
-                    <img src="http://es.web.img3.acsta.net/r_400_320/medias/nmedia/18/86/91/41/19870073.jpg">
-                    <img src="http://es.web.img3.acsta.net/r_400_320/medias/nmedia/18/78/91/11/20136910.jpg">
-                    <br>
-                    <a href="https://github.com/maite5/ActividadMovies_db">GitHub</a> 
                 </div>
-            </div>
-        </div> 
-        </div>
-        
-         
-  
-    <script type="text/javascript" src="node_modules/mdbootstrap/js/jquery.min.js"></script>
-  <script type="text/javascript" src="node_modules/mdbootstrap/js/popper.min.js"></script>
-  <script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
-  
 
-    </body>
+
+<h1>Peliculas </h1>
+       
+ <div class="container">
+     <ul>
+     @forelse ($peliculas as $pelicula)
+    <li>
+   <strong>  {{$pelicula['title']}}  </strong>
+    </li> 
+    </ul>
+    @empty 
+     @endforelse  
+    </div>  
+         
+                 
+ </div>
+</body>
 </html>
